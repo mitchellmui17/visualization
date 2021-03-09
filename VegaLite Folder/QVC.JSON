@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "repeat": {
+      "row": ["num-of-cylinders", "make", "body-style", "fuel-type"],
+      "column": ["curb-weight", "engine-size", "horsepower", "city-mpg", "highway-mpg", "price"]
+    },
+    "spec": {
+      "data": {"url": "https://raw.githubusercontent.com/mitchellmui17/visualization/master/Data/imports-85.json"},
+      "mark": "bar",
+      
+      "encoding": {
+        "y": {"field": {"repeat": "column"}, "type": "quantitative"},
+        "x": {
+          "field": {"repeat": "row"},
+          "type": "ordinal",
+          "axis": {"minExtent": 30}
+        }
+      }
+    }
+  }

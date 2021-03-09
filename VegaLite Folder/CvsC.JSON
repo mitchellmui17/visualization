@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "repeat": {
+      "row": ["num-of-cylinders", "make", "body-style", "fuel-type"],
+      "column": ["fuel-type", "body-style", "make", "num-of-cylinders"]
+    },
+    "transform": [
+      {
+        "aggregate": [{"op": "count", "field":"cars","as": "num_cars"}],
+        "groupby": ["make", "num-of-cylinders", "body-style", "fuel-type"]
+      }
+    ],
+    "spec": {
+      "data": {"url": "https://raw.githubusercontent.com/mitchellmui17/visualization/master/Data/imports-85.json"},
+      "mark": "bar",
+      
+      "encoding": {
+        "x": {"field": {"repeat": "column"}, "type": "ordinal"},
+        "y": {
+          "field": {"repeat": "row"},
+          "type": "ordinal",
+          "axis": {"minExtent": 30}
+        },
+        "color": {
+          "field": "num_cars",
+          "type": "quantitative",
+          "title": "Count of Records",
+          "legend": {"direction": "horizontal", "gradientLength": 120}
+        }
+      }
+    }
+  }
+  
